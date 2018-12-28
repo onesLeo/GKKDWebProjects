@@ -1,0 +1,176 @@
+
+create table vip_list(
+	un_vip_list BIGINT NOT NULL IDENTITY PRIMARY KEY,
+	nama_crew VARCHAR(50) NOT NULL,
+	jumlah_x INT NOT NULL,
+	jumlah_y INT NOT NULL,
+	jumlah_z INT NOT NULL,
+	jumlah_n INT NOT NULL,
+	date_change DATETIME,
+	modifier_user VARCHAR(50)
+);
+
+
+
+create table user_roles(
+	un_user_roles BIGINT NOT NULL IDENTITY PRIMARY KEY,
+	roles_name VARCHAR(50) NOT NULL,
+	date_modified DATETIME,
+	modifier_user VARCHAR(50),
+	CONSTRAINT UC_USER_ROLES UNIQUE(roles_name)
+);
+
+
+/*
+
+insert into user_roles values('ROLE_LEADERS','2018-11-23 23:00:00','lginting1988');
+insert into user_roles values('ROLE_ADMIN','2018-11-23 23:00:00','lginting1988');
+insert into user_roles values('ROLE_PEKERJA','2018-11-23 23:00:00','lginting1988');
+insert into user_roles values('ROLE_PKT','2018-11-23 23:00:00','lginting1988');
+insert into user_roles values('ROLE_WPKT','2018-11-23 23:00:00','lginting1988');
+insert into user_roles values('ROLE_LITE','2018-11-23 23:00:00','lginting1988');
+insert into user_roles values('ROLE_DNA','2018-11-23 23:00:00','lginting1988');
+*/
+
+
+
+create table zoned_crew(
+	un_zoned_crew BIGINT NOT NULL IDENTITY PRIMARY KEY,
+	zoned_name VARCHAR(150) NOT NULL,
+	latitude DECIMAL(9,6),
+	longitude DECIMAL(9,6),
+	date_modified DATETIME,
+	modifier_user VARCHAR(50)
+);
+
+/*
+insert into zoned_crew values('Tanggerang Selatan','-6.241877','106.743221');
+*/
+
+create table crew_categories(
+	un_crew_categories BIGINT NOT NULL IDENTITY PRIMARY KEY,
+	category_name VARCHAR(50) NOT NULL,
+	date_modified DATETIME,
+	modifier_user VARCHAR(50)
+);
+
+/*
+insert into crew_categories values('KARYAWAN','2018-11-23 23:00:00','lginting1988');
+insert into crew_categories values('MAHASISWA','2018-11-23 23:00:00','lginting1988');
+insert into crew_categories values('ORANG TUA','2018-11-23 23:00:00','lginting1988');
+insert into crew_categories values('YOUTH/PELAJAR','2018-11-23 23:00:00','lginting1988');
+insert into crew_categories values('ANAK','2018-11-23 23:00:00','lginting1988');
+*/
+
+create table schedule(
+	un_schedule BIGINT NOT NULL IDENTITY PRIMARY KEY,
+	schedule_name VARCHAR(150),
+	preacher VARCHAR(50),
+	theme VARCHAR(150),
+	schedule_date DATE,
+	date_modified DATETIME,
+	modifier_user VARCHAR(50)
+);
+
+
+create table the_levites(
+	un_the_levites BIGINT NOT NULL IDENTITY PRIMARY KEY,
+	keyboardis VARCHAR(50),
+	worship_leaders VARCHAR(50),
+	drummer VARCHAR(50),
+	guitarist VARCHAR(50),
+	bassist VARCHAR(50),
+	date_to_serve DATE,
+	date_modified DATETIME,
+	modifier_user VARCHAR(50)
+);
+
+create table data_ibadah(
+	un_ibadah BIGINT NOT NULL IDENTITY PRIMARY KEY,
+	jumlah_pria INT NOT NULL,
+	jumlah_wanita INT NOT NULL,
+	tanggal_ibadah DATE NOT NULL,
+	nama_pengkhotbah VARCHAR(50),
+	jumlah_persembahan DECIMAL(20,5),
+	jumlah_orang_baru INT,
+	date_change DATETIME,
+	modifier_user VARCHAR(50),
+	un_the_levites BIGINT FOREIGN KEY REFERENCES the_levites(un_the_levites),
+	un_schedule BIGINT FOREIGN KEY REFERENCES schedule(un_schedule)
+);
+
+
+create table users(
+	un_users BIGINT NOT NULL IDENTITY PRIMARY KEY,
+	first_name VARCHAR(50) NOT NULL,
+	middle_name VARCHAR(50),
+	last_name VARCHAR (50),
+	dob DATE,
+	address VARCHAR(250),
+	city VARCHAR(100),
+	post_code INT,	
+	phone_number VARCHAR(50),
+	password VARCHAR(100),
+	username VARCHAR(50),
+	email VARCHAR(50),
+	ic_number BIGINT,
+	date_change DATETIME,
+	modifier_user VARCHAR(50),
+	isActive TINYINT,
+	un_user_roles BIGINT FOREIGN KEY REFERENCES user_roles(un_user_roles)
+);
+/*
+insert into users values('Leonardo','','Ginting','1988-10-31','Jl. Swadarma Raya- Kembangan- Srengseng','Jakarta Barat', '11630',08129403883,'3d5fb43259fe858ad212c8a4db49251fba858969675ed81c8bd67ae69fc56e7844a8ec93d61a55ab','lginting1988','ones_leonardo@yahoo.co.id',12313123123123,'2018-11-23 23:00:00','lginting1988',1,2);
+
+insert into users values('Regina','','Natalia','1988-10-31','Jl. Swadarma Raya- Kembangan- Srengseng','Jakarta Barat', '11630',08129403883,'3d5fb43259fe858ad212c8a4db49251fba858969675ed81c8bd67ae69fc56e7844a8ec93d61a55ab','lginting1988','ones_leonardo@yahoo.co.id',12313123123123,'2018-11-23 23:00:00','lginting1988',1,2);
+
+
+*/
+
+
+/**
+ FAMILY (1. single 2. berkeluarga 3. cerai)
+ Edu (1.SD 2.SMP. 3.SMA 4.D3 5.S1 6.S2 7.S3)
+ membership(1. Jemaat Komit 2. Participants)
+ baptized (1. baptize 2. non-baptize)
+*/
+create table data_jemaat(
+	un_data_jemaat BIGINT NOT NULL IDENTITY PRIMARY KEY,
+	address VARCHAR(100),
+	post_code INT,
+	dob DATE,
+	family_status TINYINT,
+	membership_status TINYINT,
+	baptize_status TINYINT,
+	education_status TINYINT,
+	date_modified DATETIME,
+	modifier_user VARCHAR(50),
+	un_user_roles BIGINT FOREIGN KEY REFERENCES user_roles(un_user_roles)
+);
+
+
+create table crew(
+	un_crew BIGINT NOT NULL IDENTITY PRIMARY KEY,
+	crews_name VARCHAR(150) NOT NULL,
+	leaders_crew BIGINT,
+	leaders_role BIGINT,
+	zone_crew BIGINT FOREIGN KEY REFERENCES zoned_crew(un_zoned_crew),	
+	date_modified DATETIME,
+	modifier_user VARCHAR(50),
+	crew_categorized BIGINT FOREIGN KEY REFERENCES crew_categories(un_crew_categories)
+);
+
+create table event_crew(
+	un_event_crew BIGINT NOT NULL IDENTITY PRIMARY KEY,
+	event_name VARCHAR(150),
+	event_date DATE,
+	attendance INT,
+	man_total INT,
+	women_total INT,
+	new_comers_man INT,
+	new_comers_woman INT,
+	date_modified DATETIME,
+	modifier_user VARCHAR(50),
+	total_offerings DECIMAL(10,3),
+	un_crew BIGINT FOREIGN KEY REFERENCES crew(un_crew)
+);
