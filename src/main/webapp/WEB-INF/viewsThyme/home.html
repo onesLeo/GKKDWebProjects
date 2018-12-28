@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>Welcome Home</title>
+<div th:replace="pagebootstrap :: header-bootstrapcss" />
+<div th:replace="pagebootstrap :: header-customcss" />
+
+</head>
+<body>
+
+	<div id="header" th:include="pagebootstrap :: header"></div>
+	<section id="main-content">
+		<section class="wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h3 class="page-header">
+						<i class="fa fa-laptop"></i> Dashboard
+					</h3>
+					<ol class="breadcrumb">
+						<li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+						<li><i class="fa fa-laptop"></i>Dashboard</li>
+					</ol>
+				</div>
+			</div>
+			<h1>Welcome to Spitter</h1>
+			<a th:href="@{/spittles}">Spittles</a> <br /> View: <span
+				th:text="${view}">unknown</span>
+		</section>
+	</section>
+
+
+
+
+	<script th:src="@{/js/jquery.js}"></script>
+	<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery-ui-1.10.4.min.js}"></script>
+	<!-- bootstrap -->
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+		
+		<!-- nice scroll -->
+  <script th:src="@{/js/jquery.nicescroll.js}" type="text/javascript"></script>
+		
+	<!--custome script for all page-->
+	<script th:src="@{/js/scripts.js}"></script>
+	<script th:src="@{/js/sparklines.js}"></script>
+</body>
+</html>
