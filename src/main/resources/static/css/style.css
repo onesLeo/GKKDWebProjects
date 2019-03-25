@@ -11,6 +11,10 @@
 @import url(line-icons.css);
 
 
+html {
+  height: 100%;
+  margin: auto;
+}
 
 body {
 

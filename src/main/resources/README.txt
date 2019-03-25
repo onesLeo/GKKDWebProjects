@@ -57,3 +57,23 @@
 		  it's because of the version of spring also
 		  
 			-> this is solved when deleted server and create new server  
+	==========================Specifications==================
+	1. Spring mvc, spring security 
+	2. CSS bootstrap
+	3. thymeleaf
+	4. SQL Server
+	5. Hikari DBCP		
+	==========================PROGRESS==================
+	1. Login screen and Login With userdetails
+	2. Menu All FORM input (form_data_ibadah.html, form_crew.html) 
+	3. Template has been grouped in 1 place (Header, Body, Scripts)
+	4. package naming has been fixed
+	5. adding message properties internationalization purpose	
+	
+	
+	
+	TEMPLATE PROBLEM
+	>> if you have long name of the link probably will break down into two rows, thus will affect link 
+	  below the yet in the <b>style.css</b> need to check more in the id "sub-menu" & "sub"
+	  
+	  

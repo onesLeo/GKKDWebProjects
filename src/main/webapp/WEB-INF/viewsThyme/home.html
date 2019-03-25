@@ -3,12 +3,12 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <title>Welcome Home</title>
-<div th:replace="pagebootstrap :: header-bootstrapcss" />
-<div th:replace="pagebootstrap :: header-customcss" />
+<div th:replace="/template/pagebootstrap :: header-bootstrapcss" />
+<div th:replace="/template/pagebootstrap :: header-customcss" />
 
 </head>
 <body>
-	<div id="header" th:include="pagebootstrap :: header"></div>
+	<div id="header" th:include="template/pagebootstrap :: header"></div>
 	<section id="main-content">
 		<section class="wrapper">
 			<div class="row">
@@ -17,21 +17,21 @@
 						<i class="fa fa-laptop"></i> Dashboard
 					</h3>
 					<ol class="breadcrumb">
-						<li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+						<li><i class="fa fa-home"></i><a th:href="@{/home}">Home</a></li>
 						<li><i class="fa fa-laptop"></i>Dashboard</li>
 					</ol>
 				</div>
 			</div>
-			<h1>Welcome to Spitter</h1>
-			<a th:href="@{/spittles}">Spittles</a> <br /> View: <span
-				th:text="${view}">unknown</span>
+			<h1>Welcome to GKKD-CS Data Center</h1>
 		</section>
 	</section>
 
 
 
 
-	<script th:src="@{/js/jquery.js}"></script>
+	<!-- <script th:src="@{/js/jquery.js}"></script>-->
+	<script th:src="@{/webjars/jquery/3.1.1/jquery.js}"></script>
+	
 	<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
 	<script th:src="@{/js/jquery-ui-1.10.4.min.js}"></script>
 	<!-- bootstrap -->

@@ -11,6 +11,25 @@ var Script = function () {
         // validate signup form on keyup and submit
         $("#register_form").validate({
             rules: {
+            	tibadah: {
+            		required: true
+            	},
+            	jpria: {
+            		required: true
+            	},
+				jwanita: {
+					required: true
+				},
+				npengkhotbah: {
+					required: true,
+					minlength: 3
+				},
+				jpersembahan: {
+					required: true
+				},
+				jorangbaru: {
+					required: true
+				},
                 fullname: {
                     required: true,
                     minlength: 6
@@ -42,7 +61,30 @@ var Script = function () {
                 },
                 agree: "required"
             },
-            messages: {                
+            messages: {
+				tibadah: {
+                    required: "Tanggal Ibadah harus diisi!.",                    
+                },
+				jwanita: {
+                    required: "Jumlah Wanita harus diisi!.",
+                    
+                },
+				jpria: {
+                    required: "Jumlah Pria harus diisi!.",
+                    
+                },
+				jorangbaru: {
+                    required: "Jumlah Orang Baru harus diisi!.",
+                    
+                },
+				jpersembahan: {
+                    required: "Jumlah Persembahan harus diisi!.",
+                    
+                },				
+				npengkhotbah: {
+                    required: "Nama Pengkhotbah harus diisi!.",
+                    minlength: "Minimum panjang karakter 3."
+                },				
                 fullname: {
                     required: "Please enter a Full Name.",
                     minlength: "Your Full Name must consist of at least 6 characters long."
@@ -69,6 +111,29 @@ var Script = function () {
             }
         });
 
+        // validasi form_crew.html
+        $("form_crew").validate({
+        	rules: {
+        		ncrew: { required: true, minlength: 3},
+        		npemimpincrew: {required: true, minlength: 3}
+        	},
+        	messages: {
+        		ncrew: { required: "Nama Crew harus diisi!", 
+        				 minlength: "Minimal panjang adalah 3 karakter!"},
+        		npemimpincrew: {required: "Nama Pemimpin Crew harus diisi!", 
+        					    minlength: "Minimal panjang adalah 3 karakter!"},
+        					    
+        	}
+        });
+        
+     // validasi form_jemaat.html
+        $("form_jemaat").validate({
+        	rules: {
+        		
+        	},
+        	messages: {}
+        });
+        
         // propose username by combining first- and lastname
         $("#username").focus(function() {
             var firstname = $("#firstname").val();
