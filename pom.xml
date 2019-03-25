@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.webspringtraining</groupId>
-	<artifactId>spring</artifactId>
+	<artifactId>GKKDWebProjects</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring Maven Webapp</name>
@@ -257,6 +257,13 @@
 			<artifactId>jquery</artifactId>
 			<version>3.1.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.webjars/jquery.nicescroll -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery.nicescroll</artifactId>
+			<version>3.7.6</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>net.sourceforge.nekohtml</groupId>

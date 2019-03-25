@@ -1,0 +1,105 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>Welcome Home</title>
+<div th:replace="pagebootstrap :: header-bootstrapcss" />
+<div th:replace="pagebootstrap :: header-customcss" />
+
+</head>
+<body>
+	<div id="header" th:include="pagebootstrap :: header"></div>
+	<section id="main-content">
+		<section class="wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h3 class="page-header">
+						<i class="fa fa-files-o"></i> Form Crew
+					</h3>
+					<ol class="breadcrumb">
+						<li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+						<li><i class="icon_document_alt"></i>Forms</li>
+						<li><i class="fa fa-files-o"></i>Isi Crew</li>
+					</ol>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<section class="panel">
+						<header class="panel-heading"> Form Crew </header>
+						<div class="panel-body">
+							<div class="form">
+								<form class="form-validate form-horizontal " id="form_crew"
+									method="post">
+									<div class="form-group ">
+										<label for="fullname" class="control-label col-lg-2">Nama
+											Crew <span class="required">*</span>
+										</label>
+										<div class="col-lg-10">
+											<input class=" form-control" id="ncrew" name="ncrew"
+												type="text" required="required" min="3" />
+										</div>
+									</div>
+									<div class="form-group ">
+										<label for="fullname" class="control-label col-lg-2">Nama
+											Pemimpin crew <span class="required">*</span>
+										</label>
+										<div class="col-lg-10">
+											<input class=" form-control" id="npemimpincrew"
+												name="npemimpincrew" type="text" required="required" min="3" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-lg-2" for="inputSuccess">Role
+											Pemimpin</label>
+										<div class="col-lg-10">
+											<select class="form-control" name="rpemimpin"
+												required="required">
+												<option>Option 1</option>
+												<option>Option 2</option>
+												<option>Option 3</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-lg-2" for="inputSuccess">Zona
+											Crew</label>
+										<div class="col-lg-10">
+
+											<select name="zcrew" class="form-control" required="required">
+												<option>Option 1</option>
+												<option>Option 2</option>
+												<option>Option 3</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-lg-2" for="inputSuccess">Kategori</label>
+										<div class="col-lg-10">
+
+											<select name="kategoricrew"
+												class="form-control input-sm m-bot15">
+												<option>Option 1</option>
+												<option>Option 2</option>
+												<option>Option 3</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-lg-offset-2 col-lg-10">
+											<button class="btn btn-primary" type="submit">Save</button>
+											<button class="btn btn-default" type="button">Cancel</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+			<!-- page end-->
+		</section>
+	</section>
+	<div th:include="/template/allscripts :: usedscripts"></div>
+</body>
+</html>
